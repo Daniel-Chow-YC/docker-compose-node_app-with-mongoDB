@@ -38,4 +38,4 @@ COPY environment/app/default /etc/nginx/sites-enabled/default
 EXPOSE 3000 80
 
 # will execute this command only when you run container
-CMD service nginx start && node app.js
+CMD service nginx start && node seeds/seed.js && node app.js

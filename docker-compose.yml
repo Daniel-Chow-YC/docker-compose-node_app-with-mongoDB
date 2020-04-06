@@ -4,7 +4,7 @@ services:
     db_mongo:
         build: ./mongodb
 
-    app:
+    web_app:
         build: ./nodejs_sample_app
         ports:
           - 3000:3000
