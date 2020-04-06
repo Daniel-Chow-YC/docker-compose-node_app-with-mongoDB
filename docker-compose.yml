@@ -1,27 +1,15 @@
 version: '3'
 
 services:
-    db:
+    db_mongo:
         build: ./mongodb
-        networks:
-            priv_net:
-                ipv4_address: 192.168.10.150
 
     app:
         build: ./nodejs_sample_app
         ports:
           - 3000:3000
-        networks:
-            priv_net:
-                ipv4_address: 192.168.10.100
         environment:
-          - DB_HOST=mongodb://192.168.10.150:27017/posts
+          - DB_HOST=mongodb://db_mongo:27017/posts
         depends_on:
-          - db
+          - db_mongo
 
-networks:
-    priv_net:
-        ipam:
-            driver: default
-            config:
-                - subnet: 192.168.0.0/16
